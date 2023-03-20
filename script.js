@@ -29,11 +29,11 @@ for (let i = 0; i < 102; i++) {
 //var y = Math.random() * innerHeight;
 var dx = new Array(102);
 var dy = new Array(102);
-
+var radius = 20;
 for (let i = 0; i < 102; i++) {
 
-    dx[i] = (Math.random() * 10);
-    dy[i] = (Math.random() * 10);
+    dx[i] = ((Math.random() - 0.5) * 15);
+    dy[i] = ((Math.random() - 0.5) * 15);
     //Use windows innerWidth
 }
 
@@ -56,22 +56,23 @@ function animate() {
         var b = Math.random() * 255;
         var c = Math.random() * 255;
         ctx.beginPath();
-        ctx.arc(x[i], y[i], 20, 0, Math.PI * 2, false);
+        ctx.arc(x[i], y[i], radius, 0, Math.PI * 2, false);
         //ctx.strokeStyle = "rgba(" + String(a) + "," + String(b) + "," + String(c) + "," + "1" + ")";
         ctx.strokeStyle = "#FFF";
         ctx.stroke();
+
+        if (x[i] + radius > canvas.width || x[i] - radius < 0) {
+            dx[i] = -dx[i];
+            //x[i] += dx[i];
+        }
+
+        if (y[i] + radius > canvas.height || y[i] - radius < 0) {
+            dy[i] = -dy[i];
+            //y[i] += dy[i];
+        }
+
         x[i] += dx[i];
         y[i] += dy[i];
-        if (x[i] + 20 > canvas.width || x[i] + 20 < 0) {
-            dx[i] = -dx[i];
-            x[i] += dx[i];
-        }
-
-        if (y[i] + 20 > canvas.height || y[i] + 20 < 0) {
-            dy[i] = -dy[i];
-            y[i] += dy[i];
-        }
-
 
 
     }
