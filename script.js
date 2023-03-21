@@ -19,16 +19,17 @@ ctx.fillRect(50, 500, 100, 100);
 //Line
 var x = new Array(102);
 var y = new Array(102);
-var radius = 20;
+var radius = new Array(102);
 var dx = new Array(102);
 var dy = new Array(102);
 
 for (let i = 0; i < 102; i++) {
-
-    x[i] = (Math.random() * (innerWidth - radius * 2)) + radius;
-    y[i] = (Math.random() * (innerHeight - radius * 2)) + radius;
+    radius[i] = Math.random() * 20;
+    x[i] = (Math.random() * (innerWidth - radius[i] * 2)) + radius[i];
+    y[i] = (Math.random() * (innerHeight - radius[i] * 2)) + radius[i];
     dx[i] = ((Math.random() - 0.5) * 20);
     dy[i] = ((Math.random() - 0.5) * 20);
+
 
     //Use windows innerWidth
 }
@@ -36,11 +37,7 @@ for (let i = 0; i < 102; i++) {
 //var y = Math.random() * innerHeight;
 
 
-for (let i = 0; i < 102; i++) {
 
-
-    //Use windows innerWidth
-}
 
 
 function animate() {
@@ -60,17 +57,17 @@ function animate() {
         var c = Math.random() * 255;
 
         ctx.beginPath();
-        ctx.arc(x[i], y[i], radius, 0, Math.PI * 2, false);
+        ctx.arc(x[i], y[i], radius[i], 0, Math.PI * 2, false);
         ctx.strokeStyle = "rgba(" + String(a) + "," + String(b) + "," + String(c) + "," + "1" + ")";
         ctx.strokeStyle = "#FFF";
         ctx.stroke();
 
-        if (x[i] + radius > canvas.width || x[i] - radius < 0) {
+        if (x[i] + radius[i] > canvas.width || x[i] - radius[i] < 0) {
             dx[i] = -dx[i];
             //x[i] += dx[i];
         }
 
-        if (y[i] + radius > canvas.height || y[i] - radius < 0) {
+        if (y[i] + radius[i] > canvas.height || y[i] - radius[i] < 0) {
             dy[i] = -dy[i];
             //y[i] += dy[i];
         }
