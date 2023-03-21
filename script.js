@@ -19,21 +19,26 @@ ctx.fillRect(50, 500, 100, 100);
 //Line
 var x = new Array(102);
 var y = new Array(102);
+var radius = 20;
+var dx = new Array(102);
+var dy = new Array(102);
+
 for (let i = 0; i < 102; i++) {
 
-    x[i] = (Math.random() * innerWidth) - 10;
-    y[i] = (Math.random() * innerHeight) - 10;
+    x[i] = (Math.random() * (innerWidth - radius * 2)) + radius;
+    y[i] = (Math.random() * (innerHeight - radius * 2)) + radius;
+    dx[i] = ((Math.random() - 0.5) * 20);
+    dy[i] = ((Math.random() - 0.5) * 20);
+
     //Use windows innerWidth
 }
 //var x = Math.random() * innerWidth;
 //var y = Math.random() * innerHeight;
-var dx = new Array(102);
-var dy = new Array(102);
-var radius = 20;
+
+
 for (let i = 0; i < 102; i++) {
 
-    dx[i] = ((Math.random() - 0.5) * 15);
-    dy[i] = ((Math.random() - 0.5) * 15);
+
     //Use windows innerWidth
 }
 
@@ -41,9 +46,7 @@ for (let i = 0; i < 102; i++) {
 function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    var a = Math.random() * 255;
-    var b = Math.random() * 255;
-    var c = Math.random() * 255;
+
     /*ctx.beginPath();
     ctx.arc(x, y, 20, 0, Math.PI * 2, false);
     ctx.strokeStyle = "rgba(" + String(a) + "," + String(b) + "," + String(c) + "," + "1" + ")";
@@ -55,9 +58,10 @@ function animate() {
         var a = Math.random() * 255;
         var b = Math.random() * 255;
         var c = Math.random() * 255;
+
         ctx.beginPath();
         ctx.arc(x[i], y[i], radius, 0, Math.PI * 2, false);
-        //ctx.strokeStyle = "rgba(" + String(a) + "," + String(b) + "," + String(c) + "," + "1" + ")";
+        ctx.strokeStyle = "rgba(" + String(a) + "," + String(b) + "," + String(c) + "," + "1" + ")";
         ctx.strokeStyle = "#FFF";
         ctx.stroke();
 
